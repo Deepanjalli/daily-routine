@@ -1,125 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-    <title>Daily Routine</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-        }
-
-        h2 {
-            color: #b30000;
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            background-color: #b30000;
-            color: white;
-            padding: 10px;
-            border: 1px solid #b30000;
-        }
-
-        td {
-            padding: 8px;
-            border: 1px solid #b30000;
-            color: #b30000;
-        }
-
-        tr:nth-child(even) {
-            background-color: #ffe6e6;
-        }
-
-        .download-btn {
-            background-color: #b30000;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
-
-<button class="download-btn" onclick="generatePDF()">Save as PDF</button>
-
-<div id="content">
-
-<h2>Daily Routine Schedule</h2>
-
-<table>
-<tr>
-<th>Time</th>
-<th>Activity</th>
-<th>Category</th>
-</tr>
-
-<tr><td>6:00 AM – 6:15 AM</td><td>Wake up + Hydrate</td><td>Personal</td></tr>
-<tr><td>6:15 AM – 7:30 AM</td><td>Strength Training</td><td>Workout</td></tr>
-<tr><td>7:30 AM – 8:00 AM</td><td>Stretch</td><td>Workout</td></tr>
-<tr><td>8:00 AM – 8:30 AM</td><td>Breakfast</td><td>Personal</td></tr>
-<tr><td>8:30 AM – 9:00 AM</td><td>Plan Day</td><td>Personal</td></tr>
-<tr><td>9:00 AM – 12:30 PM</td><td>Deep Work Block 1</td><td>Work</td></tr>
-<tr><td>12:30 PM – 1:00 PM</td><td>Lunch</td><td>Personal</td></tr>
-<tr><td>1:00 PM – 4:00 PM</td><td>Deep Work Block 2</td><td>Work</td></tr>
-<tr><td>4:00 PM – 4:30 PM</td><td>Break</td><td>Personal</td></tr>
-<tr><td>4:30 PM – 8:00 PM</td><td>Work Block 3</td><td>Work</td></tr>
-<tr><td>8:00 PM – 9:30 PM</td><td>Cardio + Core</td><td>Workout</td></tr>
-<tr><td>9:30 PM – 10:00 PM</td><td>Recovery</td><td>Personal</td></tr>
-<tr><td>10:00 PM – 11:30 PM</td><td>Dinner + Relax</td><td>Personal</td></tr>
-<tr><td>11:30 PM – 12:00 AM</td><td>Wind Down</td><td>Personal</td></tr>
-<tr><td>12:00 AM – 6:00 AM</td><td>Sleep</td><td>Sleep</td></tr>
-
-</table>
-
-</div>
-
-<script>
-function generatePDF() {
-    const element = document.getElementById("content");
-
-    const opt = {
-        margin: 0.5,
-        filename: 'Daily-Routine.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
-
-    html2pdf().set(opt).from(element).save();
-}
-</script>
-=======
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>See The Schedule To Contact Me</title>
+<title>Availability Schedule</title>
 
 <style>
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #f5f5f5;
+    background: #f4f9ff;
+    overflow-x: hidden;
 }
 
-/* Animated Header */
+/* Animated Blue Header */
 .header {
-    background: linear-gradient(-45deg, #b30000, #ff0000, #cc0000, #990000);
+    background: linear-gradient(-45deg, #004aad, #007bff, #0056d6, #003c8f);
     background-size: 400% 400%;
     animation: gradientMove 8s ease infinite;
     color: white;
     padding: 40px 20px;
     text-align: center;
-    position: relative;
 }
 
 @keyframes gradientMove {
@@ -130,8 +31,8 @@ body {
 
 .header h1 {
     margin: 0;
-    font-size: 34px;
-    animation: fadeInDown 1s ease;
+    font-size: 32px;
+    animation: fadeDown 1s ease;
 }
 
 .header p {
@@ -142,59 +43,74 @@ body {
 }
 
 /* Button */
-.pdf-btn {
+.print-btn {
     background: white;
-    color: #b30000;
+    color: #004aad;
     border: none;
     padding: 12px 22px;
     font-weight: bold;
-    border-radius: 30px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    animation: fadeInUp 1.5s ease;
-}
-
-.pdf-btn:hover {
-    background: #ffe5e5;
-    transform: scale(1.05);
-}
-
-/* Table */
-table {
-    width: 85%;
-    margin: 40px auto;
-    border-collapse: collapse;
-    background: white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    animation: fadeIn 2s ease;
-}
-
-th {
-    background: #b30000;
-    color: white;
-    padding: 14px;
-}
-
-td {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
-}
-
-tr:hover {
-    background: #ffe5e5;
     transition: 0.3s ease;
 }
 
+.print-btn:hover {
+    transform: scale(1.05);
+    background: #e6f0ff;
+}
+
+/* Table Card */
+.table-container {
+    width: 85%;
+    margin: 40px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 100, 0.1);
+    overflow: hidden;
+    animation: fadeUp 1.5s ease;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #004aad;
+    color: white;
+    padding: 15px;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+tr:hover {
+    background: #f0f6ff;
+    transition: 0.3s ease;
+}
+
+/* Status colors */
+.available {
+    color: green;
+    font-weight: bold;
+}
+
+.busy {
+    color: red;
+    font-weight: bold;
+}
+
 /* Animations */
-@keyframes fadeInDown {
+@keyframes fadeDown {
     from {opacity: 0; transform: translateY(-30px);}
     to {opacity: 1; transform: translateY(0);}
 }
 
-@keyframes fadeInUp {
-    from {opacity: 0; transform: translateY(30px);}
+@keyframes fadeUp {
+    from {opacity: 0; transform: translateY(40px);}
     to {opacity: 1; transform: translateY(0);}
 }
 
@@ -203,18 +119,10 @@ tr:hover {
     to {opacity: 1;}
 }
 
-/* Print Settings */
+/* Print settings */
 @media print {
-    .pdf-btn {
+    .print-btn {
         display: none;
-    }
-
-    @page {
-        margin: 0;
-    }
-
-    body {
-        margin: 0;
     }
 }
 </style>
@@ -223,45 +131,55 @@ tr:hover {
 <body>
 
 <div class="header">
-    <h1>See The Schedule To Contact Me</h1>
-    <p>Please check availability before reaching out</p>
-    <button onclick="window.print()" class="pdf-btn">Save it as PDF</button>
+    <h1>My Availability Schedule</h1>
+    <p>Please check available time slots before contacting</p>
+    <button onclick="window.print()" class="print-btn">Save as PDF</button>
 </div>
 
+<div class="table-container">
 <table>
     <tr>
         <th>Day</th>
-        <th>Available Time</th>
+        <th>Time Slot</th>
         <th>Status</th>
     </tr>
     <tr>
         <td>Monday</td>
-        <td>10:00 AM - 4:00 PM</td>
-        <td>Available</td>
+        <td>10:00 AM – 4:00 PM</td>
+        <td class="available">Available</td>
     </tr>
     <tr>
         <td>Tuesday</td>
-        <td>11:00 AM - 5:00 PM</td>
-        <td>Available</td>
+        <td>11:00 AM – 5:00 PM</td>
+        <td class="available">Available</td>
     </tr>
     <tr>
         <td>Wednesday</td>
-        <td>Not Available</td>
-        <td>Busy</td>
+        <td>—</td>
+        <td class="busy">Busy</td>
     </tr>
     <tr>
         <td>Thursday</td>
-        <td>12:00 PM - 6:00 PM</td>
-        <td>Available</td>
+        <td>12:00 PM – 6:00 PM</td>
+        <td class="available">Available</td>
     </tr>
     <tr>
         <td>Friday</td>
-        <td>10:00 AM - 3:00 PM</td>
-        <td>Available</td>
+        <td>10:00 AM – 3:00 PM</td>
+        <td class="available">Available</td>
+    </tr>
+    <tr>
+        <td>Saturday</td>
+        <td>By Appointment</td>
+        <td class="available">Limited Slots</td>
+    </tr>
+    <tr>
+        <td>Sunday</td>
+        <td>—</td>
+        <td class="busy">Unavailable</td>
     </tr>
 </table>
->>>>>>> 7ca3cbd (backup)
+</div>
 
 </body>
 </html>
-
