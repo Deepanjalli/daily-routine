@@ -5,6 +5,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avaailability Schedule</title>
 <style>
+/* Navigation Strip */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    background: #004aad;
+    padding: 15px 0;
+    position: relative;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #cfe2ff;
+}
+
+/* Nav Item */
+.nav-item {
+    position: relative;
+}
+
+/* Submenu */
+.submenu-content {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: white;
+    min-width: 240px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,100,0.15);
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.submenu-content a {
+    display: block;
+    padding: 10px 20px;
+    color: #004aad;
+    font-weight: 500;
+}
+
+.submenu-content a:hover {
+    background: #f0f6ff;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: white;
+    color: #004aad;
+    padding: 12px 22px;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.dropbtn:hover {
+    background: #e6f0ff;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,100,0.15);
+    margin-top: 10px;
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: #004aad;
+    font-weight: 600;
+}
+
+.dropdown-content a:hover {
+    background: #f0f6ff;
+}
+
+/* Submenu */
+.submenu {
+    position: relative;
+}
+
+.submenu-content {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: white;
+    min-width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,100,0.15);
+}
+
+.submenu-content a {
+    font-weight: 500;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -133,7 +248,30 @@ tr:hover {
     <h1>My Avaailability Schedule</h1>
     <p>Please check available time slots before contacting</p>
     <button onclick="window.print()" class="print-btn">Save as PDF</button>
+    
 </div>
+<!-- Navigation Strip -->
+<div class="navbar">
+
+    <div class="nav-item">
+        <a href="#" onclick="toggleAlound(event)">Alound ▼</a>
+        <div class="submenu-content" id="aloundSubmenu">
+            <a href="alound.html">ANNOUNCEMENT</a>
+            <a href="#">Finances</a>
+            <a href="#">IMPORTANT THINGS TO TACKLE</a>
+        </div>
+    </div>
+
+    <div class="nav-item">
+        <a href="#">INVESTMENT OPPORTUNITIES</a>
+    </div>
+
+    <div class="nav-item">
+        <a href="#">MFP</a>
+    </div>
+
+</div>
+
 
 <div class="table-container">
 <table>
@@ -240,6 +378,30 @@ rows.forEach((row, index) => {
         row.style.opacity = "0.5";
     }
 });
+</script>
+<script>
+function toggleMainMenu() {
+    const menu = document.getElementById("mainMenu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function toggleAlound(event) {
+    event.preventDefault();
+    const submenu = document.getElementById("aloundSubmenu");
+    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+}
+
+// Close menus when clicking outside
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        const menus = document.getElementsByClassName("dropdown-content");
+        for (let menu of menus) {
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            }
+        }
+    }
+}
 </script>
 
 </body>
