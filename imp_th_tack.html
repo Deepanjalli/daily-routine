@@ -1,68 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Alound – Action Plan</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(to right, #0d47a1, #1976d2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+<meta charset="UTF-8">
+<title>Alound – Strategic Dashboard</title>
 
-        .container {
-            background-color: white;
-            color: #0d47a1;
-            padding: 40px 50px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            max-width: 650px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #0d47a1, #1976d2);
+}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+/* NAVIGATION */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+.navbar button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    margin: 0 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #0d47a1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
 
-        li {
-            margin-bottom: 15px;
-            font-size: 18px;
-            padding-left: 25px;
-            position: relative;
-        }
+.navbar button:hover,
+.navbar button.active {
+    background-color: #1976d2;
+    color: white;
+}
 
-        li::before {
-            content: "✔";
-            position: absolute;
-            left: 0;
-            color: #1976d2;
-            font-weight: bold;
-        }
+/* CONTAINER */
+.container {
+    max-width: 950px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    color: #0d47a1;
+}
 
-        .section-title {
-            margin-top: 25px;
-            font-weight: bold;
-            font-size: 20px;
-            color: #1565c0;
-        }
-    </style>
+.section { display: none; }
+.section.active { display: block; }
+
+h2 {
+    border-bottom: 3px solid #e3f2fd;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+/* POINTER LIST */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #1976d2;
+    font-weight: bold;
+}
+
+/* QUESTION BOX */
+.question-box {
+    background-color: #e3f2fd;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.question-box:hover {
+    background-color: #bbdefb;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    width: 60%;
+    border-radius: 12px;
+    color: #0d47a1;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Alound – Immediate Action Plan</h1>
+<!-- NAVIGATION -->
+<div class="navbar">
+    <button class="tab-btn active" onclick="openTab('execution')">Execution Plan</button>
+    <button class="tab-btn" onclick="openTab('questions')">Questions</button>
+</div>
 
-        <div class="section-title">1. Incubation Process</div>
+<div class="container">
+
+    <!-- EXECUTION -->
+    <div id="execution" class="section active">
+        <h2>Immediate Action Plan</h2>
+
+        <strong>1. Incubation Strategy</strong>
         <ul>
             <li>Identify suitable incubation programs</li>
             <li>Prepare pitch deck & documentation</li>
@@ -70,15 +146,88 @@
             <li>Align Alound with Digital India & MSME initiatives</li>
         </ul>
 
-        <div class="section-title">2. Prototype Development</div>
+        <br>
+
+        <strong>2. Prototype Development</strong>
         <ul>
             <li>Define core features (MVP)</li>
             <li>Design wireframes & user flow</li>
             <li>Develop initial working prototype</li>
             <li>Test internally and refine</li>
         </ul>
-
     </div>
+
+    <!-- QUESTIONS -->
+    <div id="questions" class="section">
+        <h2>Click Questions to View Answers</h2>
+
+        <div class="question-box" onclick="openModal('answer1')">
+            What is Alound?
+        </div>
+
+        <div class="question-box" onclick="openModal('answer2')">
+            Have you ever exported?
+        </div>
+
+        <div class="question-box" onclick="openModal('answer3')">
+            Who is backing you?
+        </div>
+
+        <div class="question-box" onclick="openModal('answer4')">
+            Do you have your MVP ready?
+        </div>
+
+        <div class="question-box" onclick="openModal('answer5')">
+            Why Alound?
+        </div>
+    </div>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modal-text"></div>
+    </div>
+</div>
+
+<script>
+function openTab(tabId) {
+    let sections = document.querySelectorAll(".section");
+    let buttons = document.querySelectorAll(".tab-btn");
+
+    sections.forEach(section => section.classList.remove("active"));
+    buttons.forEach(button => button.classList.remove("active"));
+
+    document.getElementById(tabId).classList.add("active");
+    event.target.classList.add("active");
+}
+
+function openModal(answerId) {
+    let answers = {
+        answer1: "Alound is a digital B2B export ecosystem empowering MSMEs and SHGs through transparent global trade access.",
+        answer2: "Export groundwork and research are currently in progress.",
+        answer3: "Currently self-driven and actively pursuing incubation support.",
+        answer4: "MVP is under development focusing on core marketplace functionality.",
+        answer5: "Alound addresses export inefficiencies and improves global access for Indian MSMEs."
+    };
+
+    document.getElementById("modal-text").innerText = answers[answerId];
+    document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById("modal")) {
+        closeModal();
+    }
+};
+</script>
 
 </body>
 </html>
+
